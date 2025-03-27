@@ -5,4 +5,3 @@ server = FastMCP("openmanus")
 
 # 👇 This is what Azure needs to find!
 app = server.app
-chore: trigger pre-commit fix
