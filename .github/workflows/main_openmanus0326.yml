@@ -1,4 +1,4 @@
-name: Build and deploy Python app to Azure Web App - openmanus-app
+name: Build and deploy Python app to Azure Web App - openmanus0326
 
 on:
   push:
@@ -28,6 +28,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Clean up files before deploy
+        run: |
+          rm -rf .git .github node_modules .venv __pycache__ *.log
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
