@@ -1,4 +1,4 @@
-name: Build and deploy Python app to Azure Web App - openmanus0326
+name: Build and deploy Python app to Azure Web App - openmanus-app
 
 on:
   push:
@@ -24,9 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: openmanus-app  # 👈 change this if your app name is different
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          app-name: openmanus0326  # Replace with your actual app name
           package: .
