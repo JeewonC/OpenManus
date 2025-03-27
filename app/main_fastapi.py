@@ -1,3 +1,4 @@
+# isort: skip_file
 from mcp.server.fastmcp import FastMCP
 
 # This creates the FastAPI app from your MCP server
